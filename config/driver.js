@@ -10,6 +10,7 @@ export async function createDriver() {
       platformName: "Android",
       "appium:deviceName": "R3CR703KX5M", // adb devices
       "appium:automationName": "UiAutomator2",
+      "appium:noReset": true,
       "appium:app":
         "D:\\Cinemate\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
     },

@@ -7,13 +7,14 @@ export async function typeIntoField(
   selector,
   value,
   fieldName,
-  clearData = false
+  clearData = false,
+  logFile
 ) {
   const field = await driver.$(selector);
   await field.waitForDisplayed({ timeout: TIMEOUT_CONSTANT });
   await field.waitForEnabled({ timeout: TIMEOUT_CONSTANT });
 
-  writeLog(`🖋 Focusing ${fieldName}`);
+  writeLog(logFile, `🖋 Focusing ${fieldName}`);
   await field.click();
   await driver.pressKeyCode(123); // todo move to end of text
 
@@ -21,7 +22,7 @@ export async function typeIntoField(
 
   await driver.pause(300);
 
-  writeLog(`⌨️ Typing "${value}" into ${fieldName}`);
+  writeLog(logFile, `⌨️ Typing "${value}" into ${fieldName}`);
   await driver.executeScript("mobile: type", [
     { elementId: field.elementId, text: value },
   ]);

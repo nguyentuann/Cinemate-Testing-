@@ -1,7 +1,6 @@
 import fs from "fs";
-import { logFile } from "../constant/path_file.js";
 
-function writeLog(msg) {
+function writeLog(logFile, msg) {
   console.log(msg);
   fs.appendFileSync(logFile, msg + "\n", "utf-8");
 }
